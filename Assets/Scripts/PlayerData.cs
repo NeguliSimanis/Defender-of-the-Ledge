@@ -5,13 +5,24 @@ using UnityEngine.UI;
 
 public class PlayerData : MonoBehaviour {
 
+    #region Levelling stuff
     public int exp = 0;
     public int nextLevelExp = 100;
     public int level = 1;
+    #endregion
+
     public int damage = 10;
+
     public int hp = 100;
     public int maxHp = 100;
+
+    public int mana = 100;
+    public int maxMana = 100;
+    public float manaRegenCooldown = 2f;
+
+    #region states
     public bool isDead = false;
+    #endregion 
 
     [SerializeField]
     private AudioClip woundSFX;
@@ -20,6 +31,9 @@ public class PlayerData : MonoBehaviour {
     #region Player UI elements
     [SerializeField]
     private Image healthBar;
+
+    [SerializeField]
+    private Image manaBar;
 
     [SerializeField]
     private Image expBar;
@@ -45,10 +59,7 @@ public class PlayerData : MonoBehaviour {
             deathScreen.SetActive(true);
             isDead = true;
         }
-
         #endregion
-
-
     }
 
     public void AddExp (int amount)
@@ -76,5 +87,12 @@ public class PlayerData : MonoBehaviour {
     {
         healthBar.fillAmount = (hp * 1f) / maxHp;
         expBar.fillAmount = (exp * 1f) / nextLevelExp;
+        manaBar.fillAmount = (mana * 1f) / maxMana;
+
+        // mana regen
+        if (mana < maxMana)
+        {
+            
+        }
     }
 }

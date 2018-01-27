@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     {
         if (coll.gameObject.tag == "Enemy")
         {
-            //Debug.Log("Collision with enemey!");
+            Debug.Log("Collision with enemey!");
             AIController collisionEnemy = coll.gameObject.GetComponent<AIController>();
             if (collisionEnemy.isTargetted)
             {
@@ -37,11 +37,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+
     void Update()
     {
         if (!playerData.isDead)
         {
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButtonDown(0))
             {
                 targetPosition = Input.mousePosition;
                 targetPosition = Camera.main.ScreenToWorldPoint(targetPosition);
@@ -61,6 +63,11 @@ public class PlayerController : MonoBehaviour
             {
                 isMoving = false;
                 _animator.SetBool("isMoving", isMoving);
+            }
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                playerData.mana = playerData.mana - 10;
             }
         }
     }

@@ -7,16 +7,17 @@ public class AIController : MonoBehaviour {
     private GameObject player;
     PlayerData playerData;
 
-    private SpriteRenderer spriteR;
-
     private bool isMoving = true;
     private float attackResetTime;
     private bool isAttackCooldown = false;
-    private bool isDead = false;
+    
 
     public bool isTargetted = false;
 
     #region Enemy properties
+    [SerializeField]
+    private bool isDead = false;
+
     [SerializeField]
     private int speed = 2;
 
@@ -40,13 +41,12 @@ public class AIController : MonoBehaviour {
     {
         player = GameObject.FindWithTag("Player");
         playerData = player.GetComponent<PlayerData>();
-        spriteR = gameObject.GetComponent<SpriteRenderer>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         //Debug.Log("COLLISION");
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && !isDead)
         {
             playerData.Wound(damage);
             isMoving = false;
@@ -57,7 +57,8 @@ public class AIController : MonoBehaviour {
 
     void OnMouseDown()
     {
-        isTargetted = true;
+        if (!isDead)
+            isTargetted = true;
         //Debug.Log("enemy targetted!");
     }
 
@@ -67,15 +68,19 @@ public class AIController : MonoBehaviour {
         hp = hp - playerDamage;
         if (hp <= 0)
         {
-            Destroy(gameObject);
-            playerData.AddExp(expGiven);
+            isDead = true;
+            StayDead();
         }
     }
 
     public void StayDead()
     {
+
+        gameObject.GetComponent<Animator>().SetTrigger("die");
+        gameObject.GetComponent<CircleCollider2D>().enabled = false;
+        gameObject.GetComponent<BoxCollider>().enabled = false;
         Debug.Log("IM DEAD LOL");
-        spriteR.sprite = deadSprite;
+        
     }
 
     void Update()
