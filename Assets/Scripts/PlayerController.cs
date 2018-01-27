@@ -67,7 +67,11 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetMouseButtonDown(1))
             {
-                playerData.mana = playerData.mana - 10;
+                // check if enough mana
+                if (playerData.mana >= playerData.spellCost)
+                {
+                    playerData.mana = playerData.mana - playerData.spellCost;
+                } 
             }
         }
     }

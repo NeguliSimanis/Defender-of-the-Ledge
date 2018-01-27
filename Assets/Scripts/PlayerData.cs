@@ -16,9 +16,17 @@ public class PlayerData : MonoBehaviour {
     public int hp = 100;
     public int maxHp = 100;
 
+    #region MANA
     public int mana = 100;
     public int maxMana = 100;
+    public int manaRegenAmount;
+    public float manaRegenCoefficient = 0.05f;
     public float manaRegenCooldown = 2f;
+    #endregion
+
+    #region SPELLS
+    public int spellCost = 30;
+    #endregion
 
     #region states
     public bool isDead = false;
@@ -45,6 +53,8 @@ public class PlayerData : MonoBehaviour {
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        manaRegenAmount = Mathf.RoundToInt(maxMana * manaRegenCoefficient);
+        StartRegenMana();
     }
 
     public void Wound(int damage)
@@ -78,21 +88,31 @@ public class PlayerData : MonoBehaviour {
 
             #region replenish health and other stuff
             hp = maxHp;
+            mana = maxMana;
             #endregion
         }
         #endregion
     }
 
-    void Update ()
+    private void StartRegenMana()
+    {
+        StartCoroutine(RegenMana());
+    }
+
+    IEnumerator RegenMana()
+    {
+        yield return new WaitForSeconds(manaRegenCooldown);
+        if (mana < maxMana)
+        {
+            mana = mana + manaRegenAmount;
+        }
+        StartRegenMana();
+    }
+
+    void Update()
     {
         healthBar.fillAmount = (hp * 1f) / maxHp;
         expBar.fillAmount = (exp * 1f) / nextLevelExp;
         manaBar.fillAmount = (mana * 1f) / maxMana;
-
-        // mana regen
-        if (mana < maxMana)
-        {
-            
-        }
     }
 }

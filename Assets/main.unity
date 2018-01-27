@@ -1425,7 +1425,10 @@ MonoBehaviour:
   maxHp: 100
   mana: 100
   maxMana: 100
-  manaRegenCooldown: 2
+  manaRegenAmount: 0
+  manaRegenCoefficient: 0.05
+  manaRegenCooldown: 1
+  spellCost: 30
   isDead: 0
   woundSFX: {fileID: 8300000, guid: 206db28b17ae08a4fbfb0e5079567d15, type: 3}
   healthBar: {fileID: 274896190}
