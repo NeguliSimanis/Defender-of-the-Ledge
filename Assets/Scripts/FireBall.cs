@@ -5,6 +5,7 @@ using UnityEngine;
 public class FireBall : MonoBehaviour {
 
     PlayerData playerData;
+
     [SerializeField]
     private float fireballDuration = 3f;
     [SerializeField]
@@ -12,11 +13,12 @@ public class FireBall : MonoBehaviour {
     private bool isFlying = false;
     public Vector2 target;
 
+  
     Transform _transform;
 
     void Start()
     {
-        _transform = GetComponent<Transform>();
+        _transform = gameObject.GetComponent<Transform>();
         playerData = GameObject.FindWithTag("Player").GetComponent<PlayerData>();
         StartCoroutine(SelfDestroy());
     }
@@ -26,10 +28,8 @@ public class FireBall : MonoBehaviour {
         target = Camera.main.ScreenToWorldPoint(target);
         if (target.x >= gameObject.transform.position.x)
         {
-           // Vector3 localScale = _transform.localScale;
-            //localScale.x *= -1;
+            gameObject.transform.localScale = new Vector3(-2F, 2F, 2F);
 
-            _transform.localScale *= -1;
         }   
         isFlying = true;
     }

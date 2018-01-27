@@ -40,7 +40,8 @@ public class PlayerController : MonoBehaviour
     void CastSpell(Vector2 target)
     {
         playerData.mana = playerData.mana - playerData.spellCost;
-        GameObject projectile = Instantiate(playerData.fireball, gameObject.transform.position, Quaternion.identity);
+        GameObject projectile = Instantiate(playerData.fireball,
+            gameObject.transform.position, Quaternion.identity, gameObject.transform);
         FireBall fireballProjectile = projectile.GetComponent<FireBall>();
         fireballProjectile.target = target;
         fireballProjectile.Fly();
