@@ -3,10 +3,11 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
+
+    // MOVEMENT
     private Vector3 mousePosition;
     [SerializeField]
     private float moveSpeed = 0.1f;
-
     Vector2 targetPosition;
     private bool isMoving = false;
 
