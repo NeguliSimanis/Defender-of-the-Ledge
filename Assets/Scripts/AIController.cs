@@ -75,11 +75,12 @@ public class AIController : MonoBehaviour {
 
     public void StayDead()
     {
+        playerData.AddExp(expGiven);
 
         gameObject.GetComponent<Animator>().SetTrigger("die");
         gameObject.GetComponent<CircleCollider2D>().enabled = false;
-        gameObject.GetComponent<BoxCollider>().enabled = false;
-        Debug.Log("IM DEAD LOL");
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        //Debug.Log("IM DEAD LOL");
         
     }
 

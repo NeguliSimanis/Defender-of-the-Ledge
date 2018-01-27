@@ -23,6 +23,9 @@ public class MoveUI : MonoBehaviour {
     private bool isMoving = false;
     private float distanceToMove;
 
+    [SerializeField]
+    GameObject introUI;
+
     #region Story UI variables
     [SerializeField]
     private GameObject storyUI1;
@@ -148,10 +151,19 @@ public class MoveUI : MonoBehaviour {
 
         if (isStory6Moving)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            storyUI6.SetActive(false);
-            player.SetActive(true);
-            isStory6Moving = false;
+            if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                storyUI6.SetActive(false);
+                player.SetActive(true);
+                isStory6Moving = false;
+                introUI.SetActive(false);
+            }
         }
+
+       /* if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            player.SetActive(true);
+            introUI.SetActive(false);
+        }*/
     }
 }
