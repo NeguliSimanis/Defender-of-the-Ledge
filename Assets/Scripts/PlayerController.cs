@@ -3,12 +3,12 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-    private bool isAttaking = false;
+    private PlayerData playerData;
 
     // ANIMATIONS
     Animator _animator;
-    [SerializeField]
-    Animation attackAnimation;
+    //[SerializeField]
+   // Animation attackAnimation;
 
     // MOVEMENT
     private Vector3 mousePosition;
@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _animator = gameObject.GetComponent<Animator>();
+        playerData = gameObject.GetComponent<PlayerData>();
     }
 
     void OnCollisionEnter2D(Collision2D coll)
@@ -30,8 +31,8 @@ public class PlayerController : MonoBehaviour
             AIController collisionEnemy = coll.gameObject.GetComponent<AIController>();
             if (collisionEnemy.isTargetted)
             {
-                animation["attackAnimation"].wrapMode = WrapMode.Once;
-                animation.Play("attackAnimation");
+                _animator.SetTrigger("attack");
+                collisionEnemy.Wound(playerData.damage);
             }
         }
     }

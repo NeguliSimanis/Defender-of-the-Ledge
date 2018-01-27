@@ -6,7 +6,7 @@ public class AIController : MonoBehaviour {
 
     [SerializeField]
     private GameObject player;
-    PlayerData playerController;
+    PlayerData playerData;
 
     private bool isMoving = true;
     private float attackResetTime;
@@ -25,17 +25,20 @@ public class AIController : MonoBehaviour {
     private float attackCooldown = 1f;
 
     [SerializeField]
-    private int health = 25;
+    private int hp = 25;
+
+    [SerializeField]
+    private int expGiven = 25;
     #endregion
 
     void Start ()
     {
-        playerController = player.GetComponent<PlayerData>();
+        playerData = player.GetComponent<PlayerData>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        playerController.Wound(damage);
+        playerData.Wound(damage);
         isMoving = false;
         isAttackCooldown = true;
         attackResetTime = Time.time + attackCooldown;
@@ -44,7 +47,18 @@ public class AIController : MonoBehaviour {
     void OnMouseDown()
     {
         isTargetted = true;
-        Debug.Log("enemy targetted!");
+        //Debug.Log("enemy targetted!");
+    }
+
+    public void Wound(int playerDamage)
+    {
+        Debug.Log("enemy is being attacked!");
+        hp = hp - playerDamage;
+        if (hp <= 0)
+        {
+            Destroy(gameObject);
+            playerData.AddExp(expGiven);
+        }
     }
 
     void Update()
@@ -65,7 +79,7 @@ public class AIController : MonoBehaviour {
             }
         }
 
-        if (health <= 0)
+        if (hp <= 0)
         {
             gameObject.SetActive(false);
         }
