@@ -29,7 +29,7 @@ public class EnemySpawnPoint : MonoBehaviour {
         {
             //GameObject enemyExile = Instantiate(enemyPrefab) as GameObject;
             //enemyExile.transform.parent = gameObject.transform;
-            Debug.Log("is invisible");
+            //Debug.Log("is invisible");
             Instantiate(enemyPrefab, gameObject.transform.position, Quaternion.identity);
 
         }
@@ -39,7 +39,7 @@ public class EnemySpawnPoint : MonoBehaviour {
 
     IEnumerator SpawnCooldown()
     {
-        print(Time.time);
+       // print(Time.time);
         yield return new WaitForSeconds(spawnCooldown);
         SpawnEnemy();
     }

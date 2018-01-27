@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     {
         if (coll.gameObject.tag == "Enemy")
         {
-            Debug.Log("Collision with enemey!");
+          //  Debug.Log("Collision with enemey!");
             AIController collisionEnemy = coll.gameObject.GetComponent<AIController>();
             if (collisionEnemy.isTargetted)
             {
@@ -37,7 +37,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
+    void CastSpell(Vector2 target)
+    {
+        playerData.mana = playerData.mana - playerData.spellCost;
+        GameObject projectile = Instantiate(playerData.fireball, gameObject.transform.position, Quaternion.identity);
+        FireBall fireballProjectile = projectile.GetComponent<FireBall>();
+        fireballProjectile.target = target;
+        fireballProjectile.Fly();
+    }
 
     void Update()
     {
@@ -70,7 +77,7 @@ public class PlayerController : MonoBehaviour
                 // check if enough mana
                 if (playerData.mana >= playerData.spellCost)
                 {
-                    playerData.mana = playerData.mana - playerData.spellCost;
+                    CastSpell(Input.mousePosition);
                 } 
             }
         }

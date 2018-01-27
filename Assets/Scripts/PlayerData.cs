@@ -11,7 +11,9 @@ public class PlayerData : MonoBehaviour {
     public int level = 1;
     #endregion
 
+    #region MELEE
     public int damage = 10;
+    #endregion
 
     public int hp = 100;
     public int maxHp = 100;
@@ -26,6 +28,9 @@ public class PlayerData : MonoBehaviour {
 
     #region SPELLS
     public int spellCost = 30;
+    public int spellDamage = 9;
+    [SerializeField]
+    public GameObject fireball;
     #endregion
 
     #region states
