@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
         _animator = gameObject.GetComponent<Animator>();
         playerData = gameObject.GetComponent<PlayerData>();
         moveSpeed = playerData.movementSpeed;
-        Debug.Log(moveSpeed);
+        Debug.Log("Player move speed: " + moveSpeed);
     }
 
     void OnCollisionEnter2D(Collision2D coll)
@@ -156,18 +156,12 @@ public class PlayerController : MonoBehaviour
 
     public void RefreshStatsGUIText()
     {
-        /*
-         * Max Life: 100
-         * Melee Damage: 20
-         * Max Mana: 100
-         * Mana Regen: 5/s
-         * Movement speed bonus: +0%
-         * Projectile speed bonus: +0%
-         */
-
-        intText.text = "Intelligence: " + playerData.intelligence;
-        strenText.text = "Strength: " + playerData.stren;
-        dexText.text = "Dexterity: " + playerData.dex;
+        lifeText.text = "Max Life: " + playerData.maxHp;
+        meleeDamageText.text = "Melee Damage: " + playerData.damage;
+        maxManaText.text = "Max Mana: " + playerData.maxMana;
+        manaRegenText.text = "Mana Regen: " + playerData.manaRegenAmount + "/s";
+        moveSpeedText.text = "Movement speed bonus: " + playerData.totalMovementSpeedBonus + "%";
+        projeSpeedText.text = "Projectile speed bonus: " + playerData.totalProjSpeedBonus + "%";
     }
 
     public void RefreshLevelText()
@@ -178,6 +172,7 @@ public class PlayerController : MonoBehaviour
     public void UpdateMoveSpeed()
     {
         moveSpeed = playerData.movementSpeed;
+        Debug.Log("Player move speed: " + moveSpeed);
     }
 
     private void PauseGame()

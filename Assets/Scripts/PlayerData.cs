@@ -11,8 +11,10 @@ public class PlayerData : MonoBehaviour {
     [SerializeField]
     public float movementSpeed = 0.01f;
     [SerializeField]
+    public float baseMovementSpeed = 0.01f;
+    [SerializeField]
     public float movementSpeedMultiplierPerDex = 0.1f;
-    private float totalMovementSpeedBonus = 0;
+    public float totalMovementSpeedBonus = 0;
     #endregion
 
     #region Levelling stuff
@@ -57,8 +59,10 @@ public class PlayerData : MonoBehaviour {
     [SerializeField]
     public float spellProjSpeed = 0.1f;
     [SerializeField]
+    public float baseSpellProjSpeed = 0.1f;
+    [SerializeField]
     private float spellProjSpeedMultiplierPerDex = 0.1f;
-    private float totalProjSpeedBonus = 0;
+    public float totalProjSpeedBonus = 0;
     [SerializeField]
     public GameObject fireball;
     #endregion
@@ -120,6 +124,7 @@ public class PlayerData : MonoBehaviour {
         damage = damage + damagePerStren;
 
         playerController.RefreshSkillGUIText();
+        playerController.RefreshStatsGUIText();
         if (unspentSkillPoints == 0)
         {
             playerController.hasUnspentSkillpoints = false;
@@ -136,6 +141,7 @@ public class PlayerData : MonoBehaviour {
         manaRegenAmount = Mathf.RoundToInt(manaRegenAmount *manaRegenMultiplierPerInt);
 
         playerController.RefreshSkillGUIText();
+        playerController.RefreshStatsGUIText();
         if (unspentSkillPoints == 0)
         {
             playerController.hasUnspentSkillpoints = false;
@@ -150,15 +156,16 @@ public class PlayerData : MonoBehaviour {
 
         // upgrade movement speed
         totalMovementSpeedBonus = totalMovementSpeedBonus + movementSpeedMultiplierPerDex;
-        movementSpeed = movementSpeed * (1f + totalMovementSpeedBonus);
+        movementSpeed = baseMovementSpeed * (1f + totalMovementSpeedBonus);
         playerController.UpdateMoveSpeed();
 
         // upgrade projectile speed
         totalProjSpeedBonus = totalProjSpeedBonus + spellProjSpeedMultiplierPerDex;
-        spellProjSpeed = spellProjSpeed * (1f + totalProjSpeedBonus);
+        spellProjSpeed = baseSpellProjSpeed * (1f + totalProjSpeedBonus);
 
 
         playerController.RefreshSkillGUIText();
+        playerController.RefreshStatsGUIText();
         if (unspentSkillPoints == 0)
         {
             playerController.hasUnspentSkillpoints = false;

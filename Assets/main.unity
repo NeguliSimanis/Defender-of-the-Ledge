@@ -1116,7 +1116,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &266672588
 Transform:
   m_ObjectHideFlags: 0
@@ -3127,12 +3127,12 @@ MonoBehaviour:
   strenText: {fileID: 1616042014}
   intText: {fileID: 1953591613}
   dexText: {fileID: 4479325}
-  lifeText: {fileID: 0}
-  meleeDamageText: {fileID: 0}
-  maxManaText: {fileID: 0}
-  manaRegenText: {fileID: 0}
-  moveSpeedText: {fileID: 0}
-  projeSpeedText: {fileID: 0}
+  lifeText: {fileID: 1483311624}
+  meleeDamageText: {fileID: 578209835}
+  maxManaText: {fileID: 1493090476}
+  manaRegenText: {fileID: 947345155}
+  moveSpeedText: {fileID: 148110201}
+  projeSpeedText: {fileID: 1496694259}
   pauseUI: {fileID: 767107606}
 --- !u!61 &1028174681
 BoxCollider2D:
@@ -3171,7 +3171,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 0.015
-  movementSpeedMultiplierPerDex: 1.1
+  baseMovementSpeed: 0.015
+  movementSpeedMultiplierPerDex: 0.1
+  totalMovementSpeedBonus: 0
   exp: 0
   nextLevelExp: 100
   level: 1
@@ -3194,7 +3196,9 @@ MonoBehaviour:
   spellCost: 30
   spellDamage: 9
   spellProjSpeed: 0.01
-  spellProjSpeedMultiplierPerDex: 1.1
+  baseSpellProjSpeed: 0.01
+  spellProjSpeedMultiplierPerDex: 0.1
+  totalProjSpeedBonus: 0
   fireball: {fileID: 1758956643051498, guid: 213f5bf35e837a64a8bf0547ea1c3ddc, type: 2}
   isDead: 0
   woundSFX: {fileID: 8300000, guid: 206db28b17ae08a4fbfb0e5079567d15, type: 3}
