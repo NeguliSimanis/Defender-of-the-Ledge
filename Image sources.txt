@@ -2,3 +2,4 @@ Health globe: https://poeplanner.com/img/aura/globe_hp.png
 Screaming eagle: https://d1u5p3l4wpay3k.cloudfront.net/pathofexile_gamepedia/6/68/The_Screaming_Eagle_inventory_icon.png?version=5cd8a3fd2bc1d51fdd526720e9ad88ac
 Death screen: https://i.ytimg.com/vi/jNEcnCIJilY/hqdefault.jpg
 Skeleboy: https://web.poecdn.com/gen/image/YTozOntpOjA7aTowO2k6/MjthOjI6e3M6MjoiaWQi/O2k6NTU4O3M6NDoic2l6/ZSI7czo2OiJhdmF0YXIi/O31pOjE7aToxO30,/1bbdbc02bd/Path_of_Exile_Gallery_Image.jpg
+Level up icon: https://i.ytimg.com/vi/EONkFMd7Efw/maxresdefault.jpg

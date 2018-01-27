@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -7,8 +8,6 @@ public class PlayerController : MonoBehaviour
 
     // ANIMATIONS
     Animator _animator;
-    //[SerializeField]
-   // Animation attackAnimation;
 
     // MOVEMENT
     private Vector3 mousePosition;
@@ -16,7 +15,39 @@ public class PlayerController : MonoBehaviour
     private float moveSpeed = 0.1f;
     Vector2 targetPosition;
     private bool isMoving = false;
-    
+
+    #region CHARACTER PANEL
+    public bool hasUnspentSkillpoints = false;
+    private bool isCharPanelOpen = false;
+    [SerializeField]
+    GameObject charPanel;
+
+    [SerializeField]
+    GameObject charPanelOnButton;
+
+    [SerializeField]
+    GameObject charPanelOffButton;
+
+    [SerializeField]
+    GameObject levelUpButton;
+
+    [SerializeField]
+    GameObject levelUpStrenButton;
+
+    [SerializeField]
+    GameObject levelUpIntButton;
+
+    // TEXT
+    [SerializeField]
+    Text levelText;
+
+    [SerializeField]
+    Text strenText;
+
+    [SerializeField]
+    Text intText;
+    #endregion
+
     void Start()
     {
         _animator = gameObject.GetComponent<Animator>();
@@ -45,6 +76,50 @@ public class PlayerController : MonoBehaviour
         FireBall fireballProjectile = projectile.GetComponent<FireBall>();
         fireballProjectile.target = target;
         fireballProjectile.Fly();
+    }
+
+    void ShowCharPanel()
+    {
+        isCharPanelOpen = !isCharPanelOpen;
+        if(isCharPanelOpen)
+        {
+            charPanel.SetActive(true);
+            charPanelOnButton.SetActive(false);
+            charPanelOffButton.SetActive(true);
+            levelUpButton.SetActive(!hasUnspentSkillpoints);
+        }
+        else if (!isCharPanelOpen)
+        {
+            charPanel.SetActive(false);
+            charPanelOnButton.SetActive(true);
+            charPanelOffButton.SetActive(false);
+            levelUpButton.SetActive(hasUnspentSkillpoints);
+         }
+    }
+
+    public void ShowLevelUpButtons()
+    {
+        if (isCharPanelOpen)
+        {
+            levelUpButton.SetActive(!hasUnspentSkillpoints);
+        }
+        else if (!isCharPanelOpen)
+        {
+            levelUpButton.SetActive(hasUnspentSkillpoints);
+        }
+        levelUpStrenButton.SetActive(hasUnspentSkillpoints);
+        levelUpIntButton.SetActive(hasUnspentSkillpoints);
+    }
+
+    public void RefreshSkillGUIText()
+    {
+        intText.text = "Intelligence: " + playerData.intelligence;
+        strenText.text = "Strength: " + playerData.stren;
+    }
+
+    public void RefreshLevelText()
+    {
+        levelText.text = "Level " + playerData.level;
     }
 
     void Update()
@@ -80,6 +155,11 @@ public class PlayerController : MonoBehaviour
                 {
                     CastSpell(Input.mousePosition);
                 } 
+            }
+
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                ShowCharPanel();    
             }
         }
     }
