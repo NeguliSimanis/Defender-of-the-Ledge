@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField]
+    float maxYpos;
+
     private PlayerData playerData;
     private bool isGamePaused = false;
 
@@ -13,8 +16,8 @@ public class PlayerController : MonoBehaviour
     // MOVEMENT
     private Vector3 mousePosition;
     private float moveSpeed;
-    Vector2 targetPosition;
-    private bool isMoving = false;
+    public Vector2 targetPosition;
+    public bool isMoving = false;
 
     #region CHARACTER PANEL
     public bool hasUnspentSkillpoints = false;
@@ -190,6 +193,27 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+    void CastRay()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+
+        if (hit.collider.tag == "Ground")
+        {
+            targetPosition = Input.mousePosition;
+            targetPosition = Camera.main.ScreenToWorldPoint(targetPosition);
+            isMoving = true;
+        }
+    }
+
+   /* void OnTrigger2Dexit(Collider2D other)
+    {
+        if (other.gameObject.tag == "Ground")
+        {
+            isMoving = false;
+        }
+    }*/
+
     void Update()
     {
         if (!playerData.isDead && !isGamePaused)
@@ -198,7 +222,17 @@ public class PlayerController : MonoBehaviour
             {
                 targetPosition = Input.mousePosition;
                 targetPosition = Camera.main.ScreenToWorldPoint(targetPosition);
+                    
                 if (transform.position.x != targetPosition.x && transform.position.y != targetPosition.y)
+                {
+                    if (targetPosition.y <= maxYpos)
+                    {
+                        isMoving = true;
+                        _animator.SetBool("isMoving", isMoving);
+                    }
+                }
+           
+                if (transform.position.x == targetPosition.x && transform.position.y == targetPosition.y)
                 {
                     isMoving = true;
                     _animator.SetBool("isMoving", isMoving);
@@ -210,10 +244,9 @@ public class PlayerController : MonoBehaviour
                 transform.position = Vector2.Lerp(transform.position, targetPosition, moveSpeed);
             }
 
-            if (transform.position.x == targetPosition.x && transform.position.y == targetPosition.y)
+            if (transform.position.y >= maxYpos)
             {
                 isMoving = false;
-                _animator.SetBool("isMoving", isMoving);
             }
 
             if (Input.GetMouseButtonDown(1))
