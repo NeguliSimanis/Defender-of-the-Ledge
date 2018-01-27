@@ -20,6 +20,8 @@ public class FireBall : MonoBehaviour {
     {
         _transform = gameObject.GetComponent<Transform>();
         playerData = GameObject.FindWithTag("Player").GetComponent<PlayerData>();
+        fireballSpeed = playerData.spellProjSpeed;
+        Debug.Log("spell proj speed" + fireballSpeed);
         StartCoroutine(SelfDestroy());
     }
 

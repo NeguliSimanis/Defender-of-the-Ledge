@@ -5,14 +5,14 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     private PlayerData playerData;
+    private bool isGamePaused = false;
 
     // ANIMATIONS
     Animator _animator;
 
     // MOVEMENT
     private Vector3 mousePosition;
-    [SerializeField]
-    private float moveSpeed = 0.1f;
+    private float moveSpeed;
     Vector2 targetPosition;
     private bool isMoving = false;
 
@@ -37,7 +37,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     GameObject levelUpIntButton;
 
-    // TEXT
+    [SerializeField]
+    GameObject levelUpDexButton;
+
+    #region SKILL TEXT
     [SerializeField]
     Text levelText;
 
@@ -46,12 +49,44 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     Text intText;
+
+    [SerializeField]
+    Text dexText;
+    #endregion
+
+    #region STAT TEXT
+    [SerializeField]
+    Text lifeText;
+
+    [SerializeField]
+    Text meleeDamageText;
+
+    [SerializeField]
+    Text maxManaText;
+
+    [SerializeField]
+    Text manaRegenText;
+
+    [SerializeField]
+    Text moveSpeedText;
+
+    [SerializeField]
+    Text projeSpeedText;
+    #endregion
+
+    #endregion
+
+    #region OTHER UI
+    [SerializeField]
+    GameObject pauseUI;
     #endregion
 
     void Start()
     {
         _animator = gameObject.GetComponent<Animator>();
         playerData = gameObject.GetComponent<PlayerData>();
+        moveSpeed = playerData.movementSpeed;
+        Debug.Log(moveSpeed);
     }
 
     void OnCollisionEnter2D(Collision2D coll)
@@ -109,12 +144,30 @@ public class PlayerController : MonoBehaviour
         }
         levelUpStrenButton.SetActive(hasUnspentSkillpoints);
         levelUpIntButton.SetActive(hasUnspentSkillpoints);
+        levelUpDexButton.SetActive(hasUnspentSkillpoints);
     }
 
     public void RefreshSkillGUIText()
     {
         intText.text = "Intelligence: " + playerData.intelligence;
         strenText.text = "Strength: " + playerData.stren;
+        dexText.text = "Dexterity: " + playerData.dex;
+    }
+
+    public void RefreshStatsGUIText()
+    {
+        /*
+         * Max Life: 100
+         * Melee Damage: 20
+         * Max Mana: 100
+         * Mana Regen: 5/s
+         * Movement speed bonus: +0%
+         * Projectile speed bonus: +0%
+         */
+
+        intText.text = "Intelligence: " + playerData.intelligence;
+        strenText.text = "Strength: " + playerData.stren;
+        dexText.text = "Dexterity: " + playerData.dex;
     }
 
     public void RefreshLevelText()
@@ -122,9 +175,29 @@ public class PlayerController : MonoBehaviour
         levelText.text = "Level " + playerData.level;
     }
 
+    public void UpdateMoveSpeed()
+    {
+        moveSpeed = playerData.movementSpeed;
+    }
+
+    private void PauseGame()
+    {
+        isGamePaused = !isGamePaused;
+        if (isGamePaused)
+        {
+            Time.timeScale = 0f;
+            pauseUI.SetActive(true);
+        }
+        else if (!isGamePaused)
+        {
+            Time.timeScale = 1f;
+            pauseUI.SetActive(false);
+        }
+    }
+
     void Update()
     {
-        if (!playerData.isDead)
+        if (!playerData.isDead && !isGamePaused)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -161,6 +234,11 @@ public class PlayerController : MonoBehaviour
             {
                 ShowCharPanel();    
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseGame();
         }
     }
 }
