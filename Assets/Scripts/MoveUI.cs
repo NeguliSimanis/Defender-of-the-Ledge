@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class MoveUI : MonoBehaviour {
 
+    /*
+     * TO:DO
+     * > use something other than update to move storyboards
+     * > possibility to skip with a mouse click
+     * > make storyboards stop moving after a while
+     */
+
     RectTransform canvas;
     RectTransform UItoMove;
     Vector3 startingPosition;
+
+    [SerializeField]
+    private GameObject player;
 
     [SerializeField]
     private float speed;
     private bool isMoving = false;
     private float distanceToMove;
 
+    #region Story UI variables
     [SerializeField]
     private GameObject storyUI1;
     RectTransform story1;
@@ -42,6 +53,7 @@ public class MoveUI : MonoBehaviour {
     private GameObject storyUI6;
     RectTransform story6;
     private bool isStory6Moving = false;
+    #endregion
 
     void Start()
     {
@@ -136,13 +148,16 @@ public class MoveUI : MonoBehaviour {
 
         if (isStory6Moving)
         {
-            story6.transform.Translate(0f, -speed, 0f);
-        }
-
-        if (story6.position.y > distanceToMove)
-        {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            storyUI6.SetActive(false);
+            player.SetActive(true);
             isStory6Moving = false;
         }
+
+        /*if (story6.position.y > distanceToMove)
+        {
+            
+        }*/
 
     }
 }
