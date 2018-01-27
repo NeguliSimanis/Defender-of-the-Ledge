@@ -7,6 +7,9 @@ public class EnemySpawnPoint : MonoBehaviour {
     Renderer renderer;
 
     [SerializeField]
+    private float spawnCooldown = 3f;
+
+    [SerializeField]
     private GameObject enemyPrefab;
     private bool isActive = false;
     private bool isInvisible = true;
@@ -24,12 +27,22 @@ public class EnemySpawnPoint : MonoBehaviour {
     {
         if (!renderer.isVisible)
         {
-            GameObject enemyExile = Instantiate(enemyPrefab) as GameObject;
-            enemyExile.transform.parent = gameObject.transform;
+            //GameObject enemyExile = Instantiate(enemyPrefab) as GameObject;
+            //enemyExile.transform.parent = gameObject.transform;
+            Debug.Log("is invisible");
+            Instantiate(enemyPrefab, gameObject.transform.position, Quaternion.identity);
+
         }
-        //SpawnEnemy();
+        StartCoroutine(SpawnCooldown());
     }
 
+
+    IEnumerator SpawnCooldown()
+    {
+        print(Time.time);
+        yield return new WaitForSeconds(spawnCooldown);
+        SpawnEnemy();
+    }
     /*void Update ()
     {
         // isPointVisible = renderer.isVisible;
