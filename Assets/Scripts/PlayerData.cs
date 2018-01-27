@@ -11,6 +11,7 @@ public class PlayerData : MonoBehaviour {
     public int damage = 10;
     public int hp = 100;
     public int maxHp = 100;
+    public bool isDead = false;
 
     [SerializeField]
     private AudioClip woundSFX;
@@ -19,8 +20,12 @@ public class PlayerData : MonoBehaviour {
     #region Player UI elements
     [SerializeField]
     private Image healthBar;
+
     [SerializeField]
     private Image expBar;
+
+    [SerializeField]
+    private GameObject deathScreen;
     #endregion
 
     void Start()
@@ -32,14 +37,25 @@ public class PlayerData : MonoBehaviour {
     {
         //Debug.Log("wounded!");
         audioSource.PlayOneShot(woundSFX, 0.9F);
-        hp = hp - damage;  
+        hp = hp - damage;
+
+        #region DIE
+        if (hp <= 0)
+        {
+            deathScreen.SetActive(true);
+            isDead = true;
+        }
+
+        #endregion
+
+
     }
 
     public void AddExp (int amount)
     {
         exp = exp + amount;
 
-        // LEVEL UP
+        #region LEVEL UP
         if (exp >= nextLevelExp)
         {
             #region set experience stuff
@@ -53,6 +69,7 @@ public class PlayerData : MonoBehaviour {
             hp = maxHp;
             #endregion
         }
+        #endregion
     }
 
     void Update ()

@@ -39,26 +39,29 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (!playerData.isDead)
         {
-            targetPosition = Input.mousePosition;
-            targetPosition = Camera.main.ScreenToWorldPoint(targetPosition);
-            if (transform.position.x != targetPosition.x && transform.position.y != targetPosition.y)
+            if (Input.GetMouseButton(0))
             {
-                isMoving = true;
+                targetPosition = Input.mousePosition;
+                targetPosition = Camera.main.ScreenToWorldPoint(targetPosition);
+                if (transform.position.x != targetPosition.x && transform.position.y != targetPosition.y)
+                {
+                    isMoving = true;
+                    _animator.SetBool("isMoving", isMoving);
+                }
+            }
+
+            if (isMoving)
+            {
+                transform.position = Vector2.Lerp(transform.position, targetPosition, moveSpeed);
+            }
+
+            if (transform.position.x == targetPosition.x && transform.position.y == targetPosition.y)
+            {
+                isMoving = false;
                 _animator.SetBool("isMoving", isMoving);
             }
-        }
-
-        if (isMoving)
-        {
-            transform.position = Vector2.Lerp(transform.position, targetPosition, moveSpeed);
-        }
-
-        if (transform.position.x == targetPosition.x && transform.position.y == targetPosition.y)
-        {
-            isMoving = false;
-            _animator.SetBool("isMoving", isMoving);
         }
     }
 }

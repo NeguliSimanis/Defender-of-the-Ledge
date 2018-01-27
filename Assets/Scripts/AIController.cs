@@ -52,7 +52,7 @@ public class AIController : MonoBehaviour {
 
     public void Wound(int playerDamage)
     {
-        Debug.Log("enemy is being attacked!");
+        //Debug.Log("enemy is being attacked!");
         hp = hp - playerDamage;
         if (hp <= 0)
         {
