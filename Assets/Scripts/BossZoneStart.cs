@@ -8,6 +8,12 @@ public class BossZoneStart : MonoBehaviour
     GameObject audioCamera;
 
     [SerializeField]
+    GameObject bossHealthBar;
+
+    [SerializeField]
+    GameObject boss;
+
+    [SerializeField]
     AudioClip bossMusic;
 
     private bool isBossActive = false;
@@ -19,6 +25,10 @@ public class BossZoneStart : MonoBehaviour
             AudioSource audio = audioCamera.GetComponent<AudioSource>();
             audio.clip = bossMusic;
             audio.Play();
+
+            boss.SetActive(true);
+            bossHealthBar.SetActive(true);
+
             isBossActive = true;
         }
     }

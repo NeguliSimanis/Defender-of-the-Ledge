@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossAIController : MonoBehaviour {
 
@@ -13,6 +14,12 @@ public class BossAIController : MonoBehaviour {
 
 
     public bool isTargetted = false;
+
+    [SerializeField]
+    GameObject axe;
+
+    [SerializeField]
+    private Image healthBar;
 
     #region Enemy properties
     [SerializeField]
@@ -28,7 +35,12 @@ public class BossAIController : MonoBehaviour {
     private float attackCooldown = 2f;
 
     [SerializeField]
-    private int hp = 25;
+    private float prepareAttackCooldown = 1f;
+
+    [SerializeField]
+    private int hp = 110;
+    [SerializeField]
+    private int maxHp = 110;
 
     [SerializeField]
     private int expGiven = 25;
@@ -43,18 +55,6 @@ public class BossAIController : MonoBehaviour {
         playerData = player.GetComponent<PlayerData>();
         ThrowAxe();
     }
-
-  /*  void OnTriggerEnter2D(Collider2D other)
-    {
-        //Debug.Log("COLLISION");
-        if (other.gameObject.tag == "Player" && !isDead)
-        {
-            playerData.Wound(damage);
-            isMoving = false;
-            isAttackCooldown = true;
-            attackResetTime = Time.time + attackCooldown;
-        }
-    }*/
 
     void OnMouseDown()
     {
@@ -89,13 +89,24 @@ public class BossAIController : MonoBehaviour {
     {
         if (!isDead)
         {
-            StartCoroutine(ThrowAxeCooldown());
+            StartCoroutine(ThrowAxePrepareCooldown());
         }
+    }
+
+    private IEnumerator ThrowAxePrepareCooldown()
+    {
+        isMoving = false;
+        gameObject.GetComponent<Animator>().SetTrigger("Attack");
+        yield return new WaitForSeconds(prepareAttackCooldown);
+        StartCoroutine(ThrowAxeCooldown());
     }
 
     private IEnumerator ThrowAxeCooldown()
     {
-        Debug.Log("Throwing axe 1");
+        //Debug.Log("Throwing axe 1");
+        GameObject projectile = Instantiate(axe,
+          gameObject.transform.position, Quaternion.identity, gameObject.transform);
+        isMoving = true;
         yield return new WaitForSeconds(attackCooldown);
         Debug.Log("Throwing axe");
         ThrowAxe();
@@ -126,7 +137,10 @@ public class BossAIController : MonoBehaviour {
                 isDead = true;
                 StayDead();
             }
+
         }
+
+        healthBar.fillAmount = (hp * 1f) / maxHp;
 
     }
 }

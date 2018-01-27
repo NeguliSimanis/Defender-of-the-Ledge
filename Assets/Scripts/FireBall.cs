@@ -59,6 +59,11 @@ public class FireBall : MonoBehaviour {
             
             Destroy(gameObject);
         }
+
+        else if (other.gameObject.tag == "EnemyProjectile")
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Update()

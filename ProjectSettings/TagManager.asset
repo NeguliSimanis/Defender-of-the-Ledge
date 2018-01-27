@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enemy
   - Ground
+  - PlayerProjectile
+  - EnemyProjectile
   layers:
   - Default
   - TransparentFX
@@ -43,8 +45,14 @@ TagManager:
   - name: Background
     uniqueID: 4289751289
     locked: 0
+  - name: Corpse
+    uniqueID: 3857467209
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 1258650099
     locked: 0
   - name: Foreground
     uniqueID: 2414833289

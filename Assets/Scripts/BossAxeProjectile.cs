@@ -9,7 +9,7 @@ public class BossAxeProjectile : MonoBehaviour {
     
 
     [SerializeField]
-    private float axeDuration = 2f;
+    private float axeDuration = 3f;
     [SerializeField]
     private float axeSpeed = 0.01f;
     [SerializeField]
@@ -39,7 +39,7 @@ public class BossAxeProjectile : MonoBehaviour {
     IEnumerator SelfDestroy()
     {
         yield return new WaitForSeconds(axeDuration);
-       // Destroy(gameObject);
+        Destroy(gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -47,6 +47,11 @@ public class BossAxeProjectile : MonoBehaviour {
         if (other.gameObject.tag == "Player")
         {
             playerData.Wound(axeDamage);
+            Destroy(gameObject);
+        }
+
+        if (other.gameObject.tag == "PlayerProjectile")
+        {
             Destroy(gameObject);
         }
     }
