@@ -12,6 +12,10 @@ public class PlayerData : MonoBehaviour {
     public int hp = 100;
     public int maxHp = 100;
 
+    [SerializeField]
+    private AudioClip woundSFX;
+    AudioSource audioSource;
+
     #region Player UI elements
     [SerializeField]
     private Image healthBar;
@@ -19,10 +23,16 @@ public class PlayerData : MonoBehaviour {
     private Image expBar;
     #endregion
 
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     public void Wound(int damage)
     {
-        Debug.Log("wounded!");
-        hp = hp - damage;
+        //Debug.Log("wounded!");
+        audioSource.PlayOneShot(woundSFX, 0.9F);
+        hp = hp - damage;  
     }
 
     void Update ()

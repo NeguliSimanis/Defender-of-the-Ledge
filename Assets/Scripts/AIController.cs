@@ -12,6 +12,8 @@ public class AIController : MonoBehaviour {
     private float attackResetTime;
     private bool isAttackCooldown = false;
 
+    public bool isTargetted = false;
+
     #region Enemy properties
     [SerializeField]
     private int speed = 2;
@@ -21,6 +23,9 @@ public class AIController : MonoBehaviour {
 
     [SerializeField]
     private float attackCooldown = 1f;
+
+    [SerializeField]
+    private int health = 25;
     #endregion
 
     void Start ()
@@ -34,6 +39,12 @@ public class AIController : MonoBehaviour {
         isMoving = false;
         isAttackCooldown = true;
         attackResetTime = Time.time + attackCooldown;
+    }
+
+    void OnMouseDown()
+    {
+        isTargetted = true;
+        Debug.Log("enemy targetted!");
     }
 
     void Update()
@@ -52,6 +63,11 @@ public class AIController : MonoBehaviour {
                 isAttackCooldown = false;
                 isMoving = true;
             }
+        }
+
+        if (health <= 0)
+        {
+            gameObject.SetActive(false);
         }
     }
 }
