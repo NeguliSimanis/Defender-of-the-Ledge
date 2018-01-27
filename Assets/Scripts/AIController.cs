@@ -33,15 +33,20 @@ public class AIController : MonoBehaviour {
 
     void Start ()
     {
+        player = GameObject.FindWithTag("Player");
         playerData = player.GetComponent<PlayerData>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        playerData.Wound(damage);
-        isMoving = false;
-        isAttackCooldown = true;
-        attackResetTime = Time.time + attackCooldown;
+        //Debug.Log("COLLISION");
+        if (other.gameObject.tag == "Player")
+        {
+            playerData.Wound(damage);
+            isMoving = false;
+            isAttackCooldown = true;
+            attackResetTime = Time.time + attackCooldown;
+        }   
     }
 
     void OnMouseDown()
