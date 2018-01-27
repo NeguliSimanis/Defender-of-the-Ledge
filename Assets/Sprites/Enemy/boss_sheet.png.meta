@@ -1,0 +1,405 @@
+fileFormatVersion: 2
+guid: bfaf66178b813d24db1a5a5529faedd6
+timeCreated: 1517091038
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: boss_sheet_0
+    21300002: boss_sheet_1
+    21300004: boss_sheet_2
+    21300006: boss_sheet_3
+    21300008: boss_sheet_4
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: boss_sheet_0
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 1008
+        width: 627
+        height: 813
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -49.5, y: -397.5}
+        - {x: 8.5, y: -384.5}
+        - {x: 313.5, y: 32.5}
+        - {x: 313.5, y: 142.5}
+        - {x: 122.5, y: 371.5}
+        - {x: 4.5, y: 406.5}
+        - {x: -313.5, y: 406.5}
+        - {x: -313.5, y: -406.5}
+        - {x: -181.5, y: -406.5}
+        - {x: -174.5, y: -387.5}
+        - {x: -175.5, y: -364.5}
+        - {x: -192.5, y: -355.5}
+      - - {x: -241.5, y: -47.5}
+        - {x: -246.5, y: 12.5}
+        - {x: -244.5, y: 15.5}
+        - {x: -244.5, y: 30.5}
+        - {x: -244.5, y: 21.5}
+        - {x: -243.5, y: 18.5}
+        - {x: -246.5, y: 14.5}
+        - {x: -246.5, y: 11.5}
+        - {x: -243.5, y: -12.5}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: boss_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 803
+        y: 990
+        width: 546
+        height: 813
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -176, y: -405.5}
+        - {x: -176, y: -406.5}
+        - {x: -166, y: -406.5}
+        - {x: -165, y: -405.5}
+        - {x: -166, y: -402.5}
+        - {x: -175, y: -402.5}
+      - - {x: -33, y: -85.5}
+        - {x: -35, y: -39.5}
+        - {x: -34, y: -72.5}
+        - {x: -28, y: -95.5}
+        - {x: -35, y: -115.5}
+        - {x: -36, y: -121.5}
+        - {x: -28, y: -135.5}
+        - {x: 99, y: -78.5}
+        - {x: 151, y: -58.5}
+        - {x: 273, y: -138.5}
+        - {x: 273, y: 173.5}
+        - {x: 242, y: 341.5}
+        - {x: 45, y: 406.5}
+        - {x: -273, y: 406.5}
+        - {x: -273, y: -293.5}
+        - {x: -251, y: -406.5}
+        - {x: -170, y: -406.5}
+        - {x: -109, y: -394.5}
+        - {x: -88, y: -375.5}
+        - {x: -95, y: -350.5}
+        - {x: -104, y: -334.5}
+        - {x: -55, y: -402.5}
+        - {x: -43, y: -406.5}
+        - {x: -27, y: -406.5}
+        - {x: 18, y: -402.5}
+        - {x: 53, y: -380.5}
+        - {x: 30, y: -320.5}
+        - {x: -44, y: -242.5}
+      - - {x: -35, y: -67.5}
+        - {x: -32, y: -72.5}
+        - {x: -29, y: -70.5}
+        - {x: -30, y: -66.5}
+        - {x: -32, y: -64.5}
+        - {x: -34, y: -64.5}
+      - - {x: -231, y: -15.5}
+        - {x: -231, y: -27.5}
+        - {x: -229, y: -28.5}
+        - {x: -226, y: -27.5}
+        - {x: -225, y: -19.5}
+        - {x: -225, y: -15.5}
+        - {x: -227, y: -14.5}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: boss_sheet_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 623
+        height: 813
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -47.5, y: -397.5}
+        - {x: 10.5, y: -384.5}
+        - {x: 305.5, y: -79.5}
+        - {x: 311.5, y: -20.5}
+        - {x: 311.5, y: 323.5}
+        - {x: 68.5, y: 289.5}
+        - {x: 51.5, y: 242.5}
+        - {x: 67.5, y: 229.5}
+        - {x: -0.5, y: 206.5}
+        - {x: -74.5, y: 406.5}
+        - {x: -294.5, y: 406.5}
+        - {x: -311.5, y: 393.5}
+        - {x: -311.5, y: -406.5}
+        - {x: -179.5, y: -406.5}
+        - {x: -172.5, y: -387.5}
+        - {x: -173.5, y: -364.5}
+        - {x: -190.5, y: -355.5}
+      - - {x: -239.5, y: -47.5}
+        - {x: -244.5, y: 12.5}
+        - {x: -242.5, y: 15.5}
+        - {x: -242.5, y: 30.5}
+        - {x: -242.5, y: 21.5}
+        - {x: -241.5, y: 18.5}
+        - {x: -244.5, y: 14.5}
+        - {x: -244.5, y: 11.5}
+        - {x: -241.5, y: -12.5}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: boss_sheet_3
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 553
+        width: 251
+        height: 317
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 49.5, y: 115.5}
+        - {x: -41.5, y: 158.5}
+        - {x: -81.5, y: 158.5}
+        - {x: -106.5, y: 149.5}
+        - {x: -125.5, y: -56.5}
+        - {x: -125.5, y: -158.5}
+        - {x: -100.5, y: -158.5}
+        - {x: 125.5, y: -87.5}
+        - {x: 125.5, y: 38.5}
+        - {x: 87.5, y: 82.5}
+      - - {x: -83.5, y: -90.5}
+        - {x: -84.5, y: -94.5}
+        - {x: -82.5, y: -96.5}
+        - {x: -80.5, y: -96.5}
+        - {x: -78.5, y: -94.5}
+        - {x: -78.5, y: -91.5}
+        - {x: -80.5, y: -89.5}
+      - - {x: -71.5, y: -36.5}
+        - {x: -72.5, y: -41.5}
+        - {x: -72.5, y: -49.5}
+        - {x: -70.5, y: -51.5}
+        - {x: -67.5, y: -50.5}
+        - {x: -66.5, y: -46.5}
+        - {x: -66.5, y: -37.5}
+        - {x: -68.5, y: -35.5}
+      - - {x: -61.5, y: -40.5}
+        - {x: -63.5, y: -45.5}
+        - {x: -63.5, y: -48.5}
+        - {x: -59.5, y: -51.5}
+        - {x: -56.5, y: -50.5}
+        - {x: -56.5, y: -41.5}
+        - {x: -57.5, y: -40.5}
+      - - {x: -61.5, y: -31.5}
+        - {x: -64.5, y: -34.5}
+        - {x: -64.5, y: -35.5}
+        - {x: -62.5, y: -37.5}
+        - {x: -60.5, y: -37.5}
+        - {x: -58.5, y: -35.5}
+        - {x: -58.5, y: -33.5}
+        - {x: -60.5, y: -31.5}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: boss_sheet_4
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 33
+        width: 810
+        height: 434
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 242, y: -186}
+        - {x: 345, y: -217}
+        - {x: 364, y: -217}
+        - {x: 405, y: -164}
+        - {x: 405, y: 134}
+        - {x: 319, y: 217}
+        - {x: -72, y: 217}
+        - {x: -405, y: 41}
+        - {x: -405, y: -34}
+        - {x: -403, y: -35}
+        - {x: -374, y: -34}
+        - {x: -405, y: -168}
+        - {x: -366, y: -194}
+        - {x: -316, y: -194}
+        - {x: -269, y: -145}
+        - {x: -282, y: -122}
+        - {x: -282, y: -102}
+        - {x: -280, y: -102}
+        - {x: -279, y: -95}
+        - {x: -277, y: -100}
+        - {x: -282, y: -107}
+        - {x: -282, y: -111}
+        - {x: -236, y: -169}
+        - {x: -22, y: -217}
+        - {x: 90, y: -217}
+        - {x: 163, y: -202}
+        - {x: 170, y: -186}
+        - {x: 180, y: -160}
+      - - {x: 3, y: -153}
+        - {x: 2, y: -154}
+        - {x: 5, y: -156}
+        - {x: 15, y: -158}
+        - {x: 13, y: -156}
+      - - {x: -178, y: -153}
+        - {x: -177, y: -148}
+        - {x: -185, y: -142}
+        - {x: -209, y: -139}
+        - {x: -212, y: -139}
+        - {x: -213, y: -138}
+        - {x: -218, y: -138}
+        - {x: -213, y: -139}
+        - {x: -207, y: -136}
+        - {x: -201, y: -135}
+        - {x: -183, y: -135}
+        - {x: -173, y: -119}
+        - {x: -204, y: -109}
+        - {x: -238, y: -108}
+        - {x: -245, y: -108}
+        - {x: -241, y: -109}
+        - {x: -240, y: -108}
+        - {x: -235, y: -108}
+        - {x: -205, y: -105}
+        - {x: -196, y: -98}
+        - {x: -195, y: -92}
+        - {x: -207, y: -85}
+        - {x: -190, y: -94}
+        - {x: -180, y: -108}
+        - {x: -168, y: -122}
+        - {x: -165, y: -125}
+        - {x: -165, y: -124}
+        - {x: -166, y: -125}
+        - {x: -168, y: -131}
+        - {x: -162, y: -156}
+        - {x: -184, y: -157}
+        - {x: -183, y: -158}
+      - - {x: -10, y: -150}
+        - {x: -3, y: -151}
+        - {x: -8, y: -149}
+      - - {x: -36, y: -145}
+        - {x: -25, y: -146}
+        - {x: -23, y: -145}
+        - {x: -35, y: -144}
+      - - {x: 58, y: -138}
+        - {x: 31, y: -139}
+        - {x: 36, y: -139}
+        - {x: 37, y: -138}
+        - {x: 40, y: -138}
+        - {x: 69, y: -134}
+      - - {x: 177, y: -31}
+        - {x: 178, y: -31}
+        - {x: 176, y: -30}
+        - {x: 175, y: -31}
+        - {x: 170, y: -31}
+        - {x: 160, y: -33}
+      - - {x: 92, y: 46}
+        - {x: 92, y: 53}
+        - {x: 95, y: 46}
+        - {x: 93, y: 44}
+        - {x: 94, y: 44}
+      - - {x: 176, y: 69}
+        - {x: 235, y: 65}
+        - {x: 234, y: 67}
+        - {x: 225, y: 67}
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -97,12 +97,23 @@ public class PlayerController : MonoBehaviour
         if (coll.gameObject.tag == "Enemy")
         {
           //  Debug.Log("Collision with enemey!");
-            AIController collisionEnemy = coll.gameObject.GetComponent<AIController>();
-            if (collisionEnemy.isTargetted)
+            if (coll.gameObject.name == "Boss")
             {
-                _animator.SetTrigger("attack");
-                collisionEnemy.Wound(playerData.damage);
+                BossAIController collisionEnemy = coll.gameObject.GetComponent<BossAIController>();
+                {
+                    _animator.SetTrigger("attack");
+                    collisionEnemy.Wound(playerData.damage);
+                }
             }
+            else
+            {
+                AIController collisionEnemy = coll.gameObject.GetComponent<AIController>();
+                {
+                    _animator.SetTrigger("attack");
+                    collisionEnemy.Wound(playerData.damage);
+                }
+            }
+            
         }
     }
 

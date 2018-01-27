@@ -46,8 +46,17 @@ public class FireBall : MonoBehaviour {
     {
         if (other.gameObject.tag == "Enemy")
         {
-            AIController enemyController = other.gameObject.GetComponent<AIController>();
-            enemyController.Wound(playerData.spellDamage);
+            if (other.gameObject.name != "Boss")
+            {
+                AIController enemyController = other.gameObject.GetComponent<AIController>();
+                enemyController.Wound(playerData.spellDamage);
+            }
+            else
+            {
+                BossAIController enemyController = other.gameObject.GetComponent<BossAIController>();
+                enemyController.Wound(playerData.spellDamage);
+            }
+            
             Destroy(gameObject);
         }
     }
