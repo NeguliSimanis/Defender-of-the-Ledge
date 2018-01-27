@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class AIController : MonoBehaviour {
 
-    [SerializeField]
     private GameObject player;
     PlayerData playerData;
+
+    private SpriteRenderer spriteR;
 
     private bool isMoving = true;
     private float attackResetTime;
     private bool isAttackCooldown = false;
+    private bool isDead = false;
 
     public bool isTargetted = false;
 
@@ -29,12 +31,16 @@ public class AIController : MonoBehaviour {
 
     [SerializeField]
     private int expGiven = 25;
+
+    [SerializeField]
+    private Sprite deadSprite;
     #endregion
 
     void Start ()
     {
         player = GameObject.FindWithTag("Player");
         playerData = player.GetComponent<PlayerData>();
+        spriteR = gameObject.GetComponent<SpriteRenderer>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -66,27 +72,38 @@ public class AIController : MonoBehaviour {
         }
     }
 
+    public void StayDead()
+    {
+        Debug.Log("IM DEAD LOL");
+        spriteR.sprite = deadSprite;
+    }
+
     void Update()
     {
-        if (isMoving)
+        if (!isDead)
         {
-            Vector3 localPosition = player.transform.position - transform.position;
-            localPosition = localPosition.normalized; // The normalized direction in LOCAL space
-            transform.Translate(localPosition.x * Time.deltaTime * speed, localPosition.y * Time.deltaTime * speed, localPosition.z * Time.deltaTime * speed);
-        }
-
-        if (isAttackCooldown)
-        {
-            if (attackResetTime <= Time.time)
+            if (isMoving)
             {
-                isAttackCooldown = false;
-                isMoving = true;
+                Vector3 localPosition = player.transform.position - transform.position;
+                localPosition = localPosition.normalized; // The normalized direction in LOCAL space
+                transform.Translate(localPosition.x * Time.deltaTime * speed, localPosition.y * Time.deltaTime * speed, localPosition.z * Time.deltaTime * speed);
+            }
+
+            if (isAttackCooldown)
+            {
+                if (attackResetTime <= Time.time)
+                {
+                    isAttackCooldown = false;
+                    isMoving = true;
+                }
+            }
+
+            if (hp <= 0)
+            {
+                isDead = true;
+                StayDead();
             }
         }
-
-        if (hp <= 0)
-        {
-            gameObject.SetActive(false);
-        }
+        
     }
 }

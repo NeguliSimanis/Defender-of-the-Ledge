@@ -43,39 +43,5 @@ public class EnemySpawnPoint : MonoBehaviour {
         yield return new WaitForSeconds(spawnCooldown);
         SpawnEnemy();
     }
-    /*void Update ()
-    {
-        // isPointVisible = renderer.isVisible;
-        if (isInvisible)
-        {
-            if (!renderer.isVisible)
-            {
-                Debug.Log("spawning");
-                SpawnEnemy();
-            }
-            else if (renderer.isVisible)
-            {
-                isInvisible = false;
-            }
-        }
 
-        if (!renderer.isVisible)
-        {
-            isInvisible = true;
-        }
-
-
-
-        /*if (renderer.isVisible)
-        {
-            isActive = false;
-        }*/
-
-        /* if (isActive)
-         {
-             Debug.Log("spawning");
-
-         }*/
-
-   // }
 }

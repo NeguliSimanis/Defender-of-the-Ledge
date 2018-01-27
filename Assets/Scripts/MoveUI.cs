@@ -153,11 +153,5 @@ public class MoveUI : MonoBehaviour {
             player.SetActive(true);
             isStory6Moving = false;
         }
-
-        /*if (story6.position.y > distanceToMove)
-        {
-            
-        }*/
-
     }
 }
