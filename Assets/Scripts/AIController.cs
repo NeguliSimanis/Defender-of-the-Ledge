@@ -78,6 +78,7 @@ public class AIController : MonoBehaviour {
 
     public void StayDead()
     {
+        Debug.Log("i give " + expGiven + " exp");
         playerData.AddExp(expGiven);
 
         gameObject.GetComponent<Animator>().SetTrigger("die");

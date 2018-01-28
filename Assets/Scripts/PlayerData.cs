@@ -69,11 +69,17 @@ public class PlayerData : MonoBehaviour {
 
     #region states
     public bool isDead = false;
-    #endregion 
+    #endregion
+
+    #region AUDIO
+    [SerializeField]
+    private AudioClip levelUpSFX;
 
     [SerializeField]
     private AudioClip woundSFX;
+
     AudioSource audioSource;
+    #endregion
 
     #region Player UI elements
     [SerializeField]
@@ -111,6 +117,7 @@ public class PlayerData : MonoBehaviour {
         {
             deathScreen.SetActive(true);
             isDead = true;
+            //Time.timeScale = 0f;
         }
         #endregion
     }
@@ -181,8 +188,10 @@ public class PlayerData : MonoBehaviour {
         #region LEVEL UP
         if (exp >= nextLevelExp)
         {
+            audioSource.PlayOneShot(levelUpSFX, 3.9F);
+
             #region set experience stuff
-           // Debug.Log("Level up!");
+            // Debug.Log("Level up!");
             exp = exp - nextLevelExp;
             level++;
             nextLevelExp = nextLevelExp + 10*level;
