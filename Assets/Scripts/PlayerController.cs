@@ -107,10 +107,10 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("enemy is boss");
             BossAIController collisionEnemy = coll.gameObject.GetComponent<BossAIController>();
-        {
+        
             _animator.SetTrigger("attack");
             collisionEnemy.Wound(playerData.damage);
-        }
+        
         }
     }
 
