@@ -43,16 +43,23 @@ public class Totem : MonoBehaviour {
     }
     public void HealPlayer()
     {
-        if (playerData.hp < playerData.maxHp)
+        if (isHealAvailable)
         {
-            if (isHealAvailable)
+            if (playerData.hp < playerData.maxHp)
             {
                 playerData.hp = playerData.hp + healAmount;
-                nextHealTime = Time.time + healCooldown;
-                _animator.SetBool("inactive", true);
-                isHealAvailable = false;
-            }   
+            }
+
+            if (playerData.mana < playerData.maxMana)
+            {
+                playerData.mana = playerData.mana + healAmount;
+            }
+            
+            nextHealTime = Time.time + healCooldown;
+            _animator.SetBool("inactive", true);
+            isHealAvailable = false;
         }
+       
     }
 
     void OnMouseDown()

@@ -32,7 +32,7 @@ public class BossAxeProjectile : MonoBehaviour {
 
         target = new Vector2(player.GetComponent<Transform>().position.x, player.GetComponent<Transform>().position.y);
         //axeSpeed = playerData.spellProjSpeed;
-        Debug.Log("axe proj speed" + axeSpeed);
+       // Debug.Log("axe proj speed" + axeSpeed);
         StartCoroutine(SelfDestroy());
     }
 
@@ -52,6 +52,8 @@ public class BossAxeProjectile : MonoBehaviour {
 
         if (other.gameObject.tag == "PlayerProjectile")
         {
+            Debug.Log("what");
+            Destroy(other.gameObject);
             Destroy(gameObject);
         }
     }

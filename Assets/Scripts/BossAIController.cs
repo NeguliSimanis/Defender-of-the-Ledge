@@ -65,7 +65,7 @@ public class BossAIController : MonoBehaviour {
 
     public void Wound(int playerDamage)
     {
-        //Debug.Log("enemy is being attacked!");
+        Debug.Log("enemy is being attacked!");
         hp = hp - playerDamage;
         if (hp <= 0)
         {
@@ -108,7 +108,7 @@ public class BossAIController : MonoBehaviour {
           gameObject.transform.position, Quaternion.identity, gameObject.transform);
         isMoving = true;
         yield return new WaitForSeconds(attackCooldown);
-        Debug.Log("Throwing axe");
+        //Debug.Log("Throwing axe");
         ThrowAxe();
     }
 

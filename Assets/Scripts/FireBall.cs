@@ -42,28 +42,42 @@ public class FireBall : MonoBehaviour {
         Destroy(gameObject);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Enemy")
+        Debug.Log(other.gameObject.name);
+       if (other.gameObject.tag == "Enemy")
+       {
+           if (other.gameObject.name != "Boss")
+           {
+               AIController enemyController = other.gameObject.GetComponent<AIController>();
+               enemyController.Wound(playerData.spellDamage);
+           }
+           
+
+           
+       }
+
+       if (other.gameObject.name == "Boss")
         {
-            if (other.gameObject.name != "Boss")
-            {
-                AIController enemyController = other.gameObject.GetComponent<AIController>();
-                enemyController.Wound(playerData.spellDamage);
-            }
-            else
-            {
-                BossAIController enemyController = other.gameObject.GetComponent<BossAIController>();
-                enemyController.Wound(playerData.spellDamage);
-            }
-            
+            Debug.Log("what");
+            BossAIController enemyController = other.gameObject.GetComponent<BossAIController>();
+            enemyController.Wound(playerData.spellDamage);
             Destroy(gameObject);
         }
 
-        else if (other.gameObject.tag == "EnemyProjectile")
+        /*
+        else if (other.gameObject.tag == "Boss")
         {
-            Destroy(gameObject);
-        }
+            BossAIController enemyController = other.gameObject.GetComponent<BossAIController>();
+            enemyController.Wound(playerData.spellDamage);
+        }*/
+        /* else if (other.gameObject.tag == "EnemyProjectile")
+       {
+           Destroy(other.gameObject.transform.parent);
+           Destroy(gameObject);
+       }
+        */
+        // Destroy(gameObject);
     }
 
     void Update()

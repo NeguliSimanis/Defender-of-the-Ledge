@@ -15,7 +15,7 @@ public class TotemHeal : MonoBehaviour {
 
     void OnMouseDown()
     {
-        Debug.Log("heal called");
+        Debug.Log("heal called");   
         if (totem.isPlayerNear)
         {
             totem.HealPlayer();

@@ -10,6 +10,7 @@ TagManager:
   - EnemyProjectile
   - Static
   - Totem
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -52,6 +53,9 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Projectiles
+    uniqueID: 1237139215
     locked: 0
   - name: Player
     uniqueID: 1258650099
