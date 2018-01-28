@@ -9,6 +9,7 @@ TagManager:
   - PlayerProjectile
   - EnemyProjectile
   - Static
+  - Totem
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Totem
+  - Enemy
   - 
   - 
   - 
