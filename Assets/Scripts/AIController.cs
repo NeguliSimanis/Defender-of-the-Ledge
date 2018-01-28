@@ -48,10 +48,13 @@ public class AIController : MonoBehaviour {
         //Debug.Log("COLLISION");
         if (other.gameObject.tag == "Player" && !isDead)
         {
-            playerData.Wound(damage);
-            isMoving = false;
-            isAttackCooldown = true;
-            attackResetTime = Time.time + attackCooldown;
+            if (!isAttackCooldown)
+            {
+                playerData.Wound(damage);
+                isMoving = false;
+                isAttackCooldown = true;
+                attackResetTime = Time.time + attackCooldown;
+            }
         }   
     }
 

@@ -121,6 +121,7 @@ public class PlayerData : MonoBehaviour {
         unspentSkillPoints--;
 
         maxHp = maxHp + hpPerStren;
+        hp = maxHp;
         damage = damage + damagePerStren;
 
         playerController.RefreshSkillGUIText();
@@ -181,14 +182,16 @@ public class PlayerData : MonoBehaviour {
         if (exp >= nextLevelExp)
         {
             #region set experience stuff
-            Debug.Log("Level up!");
+           // Debug.Log("Level up!");
             exp = exp - nextLevelExp;
             level++;
             nextLevelExp = nextLevelExp + 10*level;
             #endregion
 
             #region replenish health and other stuff
+            maxHp++;
             hp = maxHp;
+            playerController.RefreshStatsGUIText();
             mana = maxMana;
             #endregion
 

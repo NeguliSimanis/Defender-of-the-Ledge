@@ -136,7 +136,7 @@ MonoBehaviour:
   isTargetted: 0
   isDead: 0
   speed: 2
-  damage: 15
+  damage: 25
   attackCooldown: 1
   hp: 25
   expGiven: 100

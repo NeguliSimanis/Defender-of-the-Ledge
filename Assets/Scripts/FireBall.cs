@@ -30,7 +30,7 @@ public class FireBall : MonoBehaviour {
         target = Camera.main.ScreenToWorldPoint(target);
         if (target.x >= gameObject.transform.position.x)
         {
-            gameObject.transform.localScale = new Vector3(-2F, 2F, 2F);
+            gameObject.transform.localScale = new Vector3(-0.6F, 0.6F, 1F);
 
         }   
         isFlying = true;

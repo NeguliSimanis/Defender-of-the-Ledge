@@ -7,7 +7,7 @@ public class EnemySpawnPoint : MonoBehaviour {
     Renderer renderer;
 
     [SerializeField]
-    private float spawnCooldown = 3f;
+    private float spawnCooldown = 8f;
 
     [SerializeField]
     private GameObject enemyPrefab;

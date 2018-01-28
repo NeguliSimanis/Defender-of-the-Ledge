@@ -121,7 +121,7 @@ public class PlayerController : MonoBehaviour
     {
         playerData.mana = playerData.mana - playerData.spellCost;
         GameObject projectile = Instantiate(playerData.fireball,
-            gameObject.transform.position, Quaternion.identity, gameObject.transform);
+            gameObject.transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Static").transform);
         FireBall fireballProjectile = projectile.GetComponent<FireBall>();
         fireballProjectile.target = target;
         fireballProjectile.Fly();
@@ -174,8 +174,8 @@ public class PlayerController : MonoBehaviour
         meleeDamageText.text = "Melee Damage: " + playerData.damage;
         maxManaText.text = "Max Mana: " + playerData.maxMana;
         manaRegenText.text = "Mana Regen: " + playerData.manaRegenAmount + "/s";
-        moveSpeedText.text = "Movement speed bonus: " + playerData.totalMovementSpeedBonus + "%";
-        projeSpeedText.text = "Projectile speed bonus: " + playerData.totalProjSpeedBonus + "%";
+        moveSpeedText.text = "Movement speed bonus: " + playerData.totalMovementSpeedBonus*10 + "%";
+        projeSpeedText.text = "Projectile speed bonus: " + playerData.totalProjSpeedBonus*10 + "%";
     }
 
     public void RefreshLevelText()
