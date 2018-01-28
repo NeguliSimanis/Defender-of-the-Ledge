@@ -160,10 +160,11 @@ public class MoveUI : MonoBehaviour {
             }
         }
 
-       /* if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             player.SetActive(true);
             introUI.SetActive(false);
-        }*/
+            gameObject.SetActive(false);
+        }
     }
 }

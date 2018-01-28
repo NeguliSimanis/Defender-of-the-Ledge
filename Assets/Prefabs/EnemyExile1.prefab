@@ -136,11 +136,10 @@ MonoBehaviour:
   isTargetted: 0
   isDead: 0
   speed: 2
-  damage: 25
+  damage: 20
   attackCooldown: 1
   hp: 25
-  expGiven: 100
-  deadSprite: {fileID: 21300000, guid: fb6180f6e4a865b4c8ebb97875daaff0, type: 3}
+  expGiven: 50
 --- !u!212 &212574597930986898
 SpriteRenderer:
   m_ObjectHideFlags: 1

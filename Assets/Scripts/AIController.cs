@@ -33,8 +33,8 @@ public class AIController : MonoBehaviour {
     [SerializeField]
     private int expGiven = 25;
 
-    [SerializeField]
-    private Sprite deadSprite;
+    //[SerializeField]
+    //private Sprite deadSprite;
     #endregion
 
     void Start ()
@@ -83,6 +83,7 @@ public class AIController : MonoBehaviour {
         gameObject.GetComponent<Animator>().SetTrigger("die");
         gameObject.GetComponent<CircleCollider2D>().enabled = false;
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "corpse";
         //Debug.Log("IM DEAD LOL");
         
     }

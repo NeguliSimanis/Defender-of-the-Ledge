@@ -55,6 +55,18 @@ public class Totem : MonoBehaviour {
         }
     }
 
+    void OnMouseDown()
+    {
+        HealPlayer();
+       /*Debug.Log("heal called");
+        if (totem.isPlayerNear)
+        {
+            totem.HealPlayer();
+
+            Debug.Log("heal called");
+        }*/
+    }
+
     void Update()
     {
         if (!isHealAvailable && nextHealTime <= Time.time)
