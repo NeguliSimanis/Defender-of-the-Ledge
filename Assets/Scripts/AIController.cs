@@ -6,13 +6,19 @@ public class AIController : MonoBehaviour {
 
     private GameObject player;
     PlayerData playerData;
+   
+    private float attackResetTime; // timestap, value depends on cooldown
 
     private bool isMoving = true;
-    private float attackResetTime;
     private bool isAttackCooldown = false;
-    
-
     public bool isTargetted = false;
+
+    #region AUDIO
+    [SerializeField]
+    private AudioClip dieSFX;
+
+    AudioSource audioSource;
+    #endregion
 
     #region Enemy properties
     [SerializeField]
@@ -39,6 +45,7 @@ public class AIController : MonoBehaviour {
 
     void Start ()
     {
+        audioSource = gameObject.GetComponent<AudioSource>();
         player = GameObject.FindWithTag("Player");
         playerData = player.GetComponent<PlayerData>();
     }
@@ -78,13 +85,18 @@ public class AIController : MonoBehaviour {
 
     public void StayDead()
     {
-        Debug.Log("i give " + expGiven + " exp");
+        //Debug.Log("i give " + expGiven + " exp");
+        
+        if (playerData.exp + expGiven < playerData.nextLevelExp)
+        {
+            audioSource.PlayOneShot(dieSFX, 0.9F);
+        }
         playerData.AddExp(expGiven);
 
         gameObject.GetComponent<Animator>().SetTrigger("die");
         gameObject.GetComponent<CircleCollider2D>().enabled = false;
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
-        gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "corpse";
+        gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Corpse";
         //Debug.Log("IM DEAD LOL");
         
     }

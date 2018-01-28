@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     float maxYpos;
 
     private PlayerData playerData;
-    private bool isGamePaused = false;
+    public bool isGamePaused = false;
 
     // ANIMATIONS
     Animator _animator;
@@ -224,6 +224,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(isGamePaused);
         if (!playerData.isDead && !isGamePaused)
         {
             if (Input.GetMouseButtonDown(0))

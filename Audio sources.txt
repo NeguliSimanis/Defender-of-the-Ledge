@@ -4,3 +4,4 @@
 > poe soundtrack boss = https://www.youtube.com/watch?v=tbwtaLNn2Ac&index=23&list=PLm_TQkIlJNuZv-9shc0Pa2IrDeZBT4vP2
 > fireball effect - https://freesound.org/people/Julien%20Matthey/sounds/105016/
 > level up sound - https://drive.google.com/file/d/0B8hC4VDxu_BDM1hzSXdPWEVSWXc/view
+> enemy death sfx - https://freesound.org/people/Replix/sounds/173126/

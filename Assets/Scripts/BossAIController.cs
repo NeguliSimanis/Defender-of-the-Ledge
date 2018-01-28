@@ -23,7 +23,7 @@ public class BossAIController : MonoBehaviour {
 
     #region Enemy properties
     [SerializeField]
-    private bool isDead = false;
+    public bool isDead = false;
 
     [SerializeField]
     private int speed = 2;
