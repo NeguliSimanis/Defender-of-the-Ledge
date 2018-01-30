@@ -183,6 +183,7 @@ public class PlayerData : MonoBehaviour {
 
     public void AddExp (int amount)
     {
+        Debug.Log(amount + " exp added");
         exp = exp + amount;
 
         #region LEVEL UP

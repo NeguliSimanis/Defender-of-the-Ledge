@@ -16,15 +16,20 @@ public class BossZoneStart : MonoBehaviour
     [SerializeField]
     AudioClip bossMusic;
 
+    MusicManager musicManager;
+
     private bool isBossActive = false;
+
+    void Start()
+    {
+        musicManager = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MusicManager>();
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (!isBossActive && other.gameObject.tag == "Player")
         {
-            AudioSource audio = audioCamera.GetComponent<AudioSource>();
-            audio.clip = bossMusic;
-            audio.Play();
+            musicManager.SetBossMusic();
 
             boss.SetActive(true);
             bossHealthBar.SetActive(true);

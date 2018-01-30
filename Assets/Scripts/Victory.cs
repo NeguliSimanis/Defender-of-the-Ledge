@@ -13,11 +13,15 @@ public class Victory : MonoBehaviour {
 
     PlayerController playerController;
 
+    MusicManager musicManager;
+
     private bool isVictory = false;
+    private float victoryDelaySeconds = 1f;
 
 	void Start ()
     {
         playerController = gameObject.GetComponent<PlayerController>();
+        musicManager = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MusicManager>();
 	}
 	
     void WinGame()
@@ -25,15 +29,23 @@ public class Victory : MonoBehaviour {
         Time.timeScale = 0;
         playerController.isGamePaused = true;
         victoryMenu.SetActive(true);
+        musicManager.SetDefaultMusic();
     }
 
-	// Update is called once per frame
-	void Update ()
+
+    IEnumerator VictoryDelay()
+    {
+        yield return new WaitForSeconds(victoryDelaySeconds);
+        WinGame();
+    }
+
+    // Update is called once per frame
+    void Update ()
     {
 		if (!isVictory && bossAIController.isDead)
         {
             isVictory = true;
-            WinGame();
+            StartCoroutine(VictoryDelay());
         }
 	}
 }

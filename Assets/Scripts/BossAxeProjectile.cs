@@ -5,6 +5,7 @@ using UnityEngine;
 public class BossAxeProjectile : MonoBehaviour {
 
     PlayerData playerData;
+    PlayerController playerController;
     GameObject player;
     
 
@@ -29,6 +30,7 @@ public class BossAxeProjectile : MonoBehaviour {
         _transform = gameObject.GetComponent<Transform>();
         player = GameObject.FindWithTag("Player");
         playerData = player.GetComponent<PlayerData>();
+        playerController = player.GetComponent<PlayerController>();
 
         target = new Vector2(player.GetComponent<Transform>().position.x, player.GetComponent<Transform>().position.y);
         //axeSpeed = playerData.spellProjSpeed;
@@ -60,10 +62,10 @@ public class BossAxeProjectile : MonoBehaviour {
 
     void Update()
     {
-        transform.position = Vector2.Lerp(transform.position, target, axeSpeed);
+        if (!playerController.isGamePaused)
+            transform.position = Vector2.Lerp(transform.position, target, axeSpeed);
 
-       
-            transform.Rotate(Vector3.forward * axeRotation);
+        transform.Rotate(Vector3.forward * axeRotation);
         
     }
 }

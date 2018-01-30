@@ -5,6 +5,8 @@ using UnityEngine;
 public class FireBall : MonoBehaviour {
 
     PlayerData playerData;
+    PlayerController playerController;
+    GameObject player;
 
     [SerializeField]
     private float fireballDuration = 3f;
@@ -19,7 +21,11 @@ public class FireBall : MonoBehaviour {
     void Start()
     {
         _transform = gameObject.GetComponent<Transform>();
-        playerData = GameObject.FindWithTag("Player").GetComponent<PlayerData>();
+
+        player = GameObject.FindWithTag("Player");
+        playerData = player.GetComponent<PlayerData>();
+        playerController = player.GetComponent<PlayerController>();
+
         fireballSpeed = playerData.spellProjSpeed;
         Debug.Log("spell proj speed" + fireballSpeed);
         StartCoroutine(SelfDestroy());
@@ -52,9 +58,6 @@ public class FireBall : MonoBehaviour {
                AIController enemyController = other.gameObject.GetComponent<AIController>();
                enemyController.Wound(playerData.spellDamage);
            }
-           
-
-           
        }
 
        if (other.gameObject.name == "Boss")
@@ -82,6 +85,7 @@ public class FireBall : MonoBehaviour {
 
     void Update()
     {
-        transform.position = Vector2.Lerp(transform.position, target, fireballSpeed);
+        if (!playerController.isGamePaused)
+            transform.position = Vector2.Lerp(transform.position, target, fireballSpeed);
     }
 }

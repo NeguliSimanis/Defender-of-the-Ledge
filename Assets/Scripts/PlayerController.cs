@@ -171,8 +171,8 @@ public class PlayerController : MonoBehaviour
         meleeDamageText.text = "Melee Damage: " + playerData.damage;
         maxManaText.text = "Max Mana: " + playerData.maxMana;
         manaRegenText.text = "Mana Regen: " + playerData.manaRegenAmount + "/s";
-        moveSpeedText.text = "Movement speed bonus: " + playerData.totalMovementSpeedBonus*10 + "%";
-        projeSpeedText.text = "Projectile speed bonus: " + playerData.totalProjSpeedBonus*10 + "%";
+        moveSpeedText.text = "Movement speed bonus: " + playerData.totalMovementSpeedBonus*100 + "%";
+        projeSpeedText.text = "Projectile speed bonus: " + playerData.totalProjSpeedBonus*100 + "%";
     }
 
     public void RefreshLevelText()
@@ -202,18 +202,6 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void CastRay()
-    {
-        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-
-        if (hit.collider.tag == "Ground")
-        {
-            targetPosition = Input.mousePosition;
-            targetPosition = Camera.main.ScreenToWorldPoint(targetPosition);
-            isMoving = true;
-        }
-    }
-
    /* void OnTrigger2Dexit(Collider2D other)
     {
         if (other.gameObject.tag == "Ground")
@@ -224,7 +212,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(isGamePaused);
+       // Debug.Log(isGamePaused);
         if (!playerData.isDead && !isGamePaused)
         {
             if (Input.GetMouseButtonDown(0))
@@ -243,19 +231,20 @@ public class PlayerController : MonoBehaviour
            
                 if (transform.position.x == targetPosition.x && transform.position.y == targetPosition.y)
                 {
-                    isMoving = true;
+                    isMoving = false;
                     _animator.SetBool("isMoving", isMoving);
                 }
             }
 
-            if (isMoving)
+            if (isMoving && !Input.GetKey(KeyCode.LeftShift))
             {
                 transform.position = Vector2.Lerp(transform.position, targetPosition, moveSpeed);
             }
 
-            if (transform.position.y >= maxYpos)
+            if (transform.position.y >= maxYpos || Input.GetKey(KeyCode.LeftShift))
             {
                 isMoving = false;
+                _animator.SetBool("isMoving", isMoving);
             }
 
             if (Input.GetMouseButtonDown(1))
